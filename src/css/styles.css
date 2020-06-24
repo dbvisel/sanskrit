@@ -1,0 +1,63 @@
+/* styles.css */
+
+@font-face {
+  font-family: "Inter";
+  src: url("./../fonts/Inter-UI-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("./../fonts/Inter-UI-Italic.woff2") format("woff2");
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("./../fonts/Inter-UI-Bold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("./../fonts/Inter-UI-BoldItalic.woff2") format("woff2");
+  font-weight: bold;
+  font-style: italic;
+}
+
+:root {
+  --white: #fff;
+  --black: #000;
+  --backdrop: cornflowerblue;
+  --text: #efefef;
+  --outsidePadding: 20px;
+  --insidePadding: 10px;
+  --headerHeight: 100px;
+  --footerHeight: 101px;
+  font-family: "Inter", sans-serif;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+html {
+  background-color: var(--backdrop);
+  color: var(--text);
+}
+
+body {
+  scroll-snap-type: y mandatory;
+  background-color: var(--backdrop);
+}
+
+a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--text);
+  text-decoration: underline;
+}
