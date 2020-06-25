@@ -41,4 +41,12 @@ export const ButtonListUl = styled.ul`
       color: var(--backdrop);
     }
   }
+  @media (max-width: 767px) {
+    & li {
+      font-size: 16px;
+      margin: 4px;
+      padding: 1px 3px;
+      border-width: 1px;
+    }
+  }
 `;

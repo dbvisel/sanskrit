@@ -5,6 +5,7 @@ export const TopMenuNav = styled.nav`
   justify-content: center;
   padding-bottom: var(--outsidePadding);
   margin-bottom: auto;
+  flex-wrap: wrap;
   & a {
     border-bottom: 2px solid transparent;
     white-space: nowrap;

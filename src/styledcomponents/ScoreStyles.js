@@ -23,6 +23,15 @@ export const ScoreDiv = styled.div`
   & + div {
     margin-top: var(--outsidePadding);
   }
+  @media (max-width: 767px) {
+    & ul {
+      font-size: 16px;
+      line-height: 20px;
+      & li span {
+        min-width: 72px;
+      }
+    }
+  }
 `;
 
 export const ScoreSection = styled.div`
