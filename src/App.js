@@ -23,18 +23,16 @@ function App() {
   const [score, setScore] = React.useState(makeIds());
 
   const calculateScore = (id, clicks) => {
-    console.log(score);
     const thisId = score.filter((x) => x.id === id)[0];
     thisId.times++;
     thisId.clicks += clicks;
-    console.log(thisId);
     const newScores = score.slice();
     setScore(newScores);
   };
 
-  React.useEffect(() => {
-    console.log(score);
-  }, [score]);
+  // React.useEffect(() => {
+  //   console.log(score);
+  // }, [score]);
 
   return (
     <Wrapper>

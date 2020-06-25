@@ -50,7 +50,7 @@ const Vowels = ({ data, score }) => {
 
   React.useEffect(() => {
     // console.log(correctElements);
-    console.log(currentCharacter);
+    // console.log(currentCharacter);
     if (
       correctElements.length &&
       correctElements.complexity &&

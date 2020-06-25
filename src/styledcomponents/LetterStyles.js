@@ -29,6 +29,7 @@ export const ButtonListUl = styled.ul`
     border: 2px solid var(--text);
     cursor: pointer;
     user-select: none;
+    transition: 0.25s;
     &.on {
       background-color: var(--text);
       color: var(--backdrop);
