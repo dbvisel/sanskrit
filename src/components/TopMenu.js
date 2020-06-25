@@ -12,7 +12,6 @@ const TopMenu = ({ ids, titles, selected, setSelected }) => {
           className={x === selected ? "on" : ""}
           onClick={(x) => {
             x.preventDefault();
-            console.log(x.target.id);
             setSelected(x.target.id);
           }}
         >
