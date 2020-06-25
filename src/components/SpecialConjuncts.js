@@ -5,20 +5,14 @@ import {
   ChoicesButtons,
 } from "./../styledcomponents/LetterStyles";
 
-const Vowels = ({ data, score, settings }) => {
-  const characters = settings.useUncommonCharacters
-    ? data.characters
-    : data.characters.filter((x) => !x.uncommon);
-  const lengths = Array.from(new Set(characters.map((x) => x.length)));
-  const complexities = Array.from(new Set(characters.map((x) => x.complexity)));
+const SpecialConjuncts = ({ data, score, settings }) => {
+  const characters = data.characters;
   const englishLetters = characters.map((x) => x.en);
   const [clicks, setClicks] = React.useState(0);
   const [currentCharacter, setCurrentCharacter] = React.useState(
     characters[Math.floor(Math.random() * characters.length)]
   );
   const [correctElements, setCorrectElements] = React.useState({
-    length: false,
-    complexity: false,
     en: false,
   });
 
@@ -53,41 +47,24 @@ const Vowels = ({ data, score, settings }) => {
   React.useEffect(() => {
     // console.log(correctElements);
     // console.log(currentCharacter);
-    if (
-      correctElements.en &&
-      (!settings.useClassifiers ||
-        (correctElements.length && correctElements.complexity))
-    ) {
-      setCorrectElements({ length: false, complexity: false, en: false });
-      score(`vowels_${characters.indexOf(currentCharacter)}`, clicks);
+    if (correctElements.en) {
+      setCorrectElements({ en: false });
+      score(`specialConjuncts_${characters.indexOf(currentCharacter)}`, clicks);
       setCurrentCharacter(
         characters[Math.floor(Math.random() * characters.length)]
       );
       setClicks(0);
     }
-  }, [
-    correctElements,
-    characters,
-    clicks,
-    currentCharacter,
-    score,
-    settings.useClassifiers,
-  ]);
+  }, [correctElements, characters, clicks, currentCharacter, score]);
 
   return (
     <>
       <BigCharacter>{currentCharacter.sa}</BigCharacter>
       <ChoicesButtons>
         <ButtonList categoryData={englishLetters} categoryId={"en"} />
-        {settings.useClassifiers ? (
-          <>
-            <ButtonList categoryData={lengths} categoryId={"length"} />
-            <ButtonList categoryData={complexities} categoryId={"complexity"} />
-          </>
-        ) : null}
       </ChoicesButtons>
     </>
   );
 };
 
-export default Vowels;
+export default SpecialConjuncts;

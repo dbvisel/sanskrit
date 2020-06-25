@@ -20,4 +20,10 @@ export const TopMenuNav = styled.nav`
       border-bottom-color: var(--text);
     }
   }
+  @media (max-width: 767px) {
+    font-size: 12px;
+    & a {
+      border-bottom: 1px solid transparent;
+    }
+  }
 `;

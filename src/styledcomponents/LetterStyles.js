@@ -35,6 +35,7 @@ export const ButtonListUl = styled.ul`
       background-color: var(--text);
       color: var(--backdrop);
       cursor: initial;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.25);
     }
     &:hover {
       background-color: var(--text);
@@ -47,6 +48,11 @@ export const ButtonListUl = styled.ul`
       margin: 4px;
       padding: 1px 3px;
       border-width: 1px;
+      font-weight: normal;
+      &:hover {
+        color: var(--text);
+        background-color: var(--backdrop);
+      }
     }
   }
 `;

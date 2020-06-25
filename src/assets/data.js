@@ -304,8 +304,17 @@ const data = {
       },
     ],
   },
-  additionalCharacters: { title: `Additional Characters`, characters: [] },
-  specialConjuncts: { title: `Special Conjuncts`, characters: [] },
+  additionalCharacters: { title: `Additional characters`, characters: [] },
+  specialConjuncts: {
+    title: `Special conjuncts`,
+    characters: [
+      { en: "kṣa", sa: "क्ष" },
+      { en: "jña", sa: "ज्ञ" },
+      { en: "śca", sa: "श्च" }, // this is busted
+      { en: "śra", sa: "श्र" },
+      { en: "śva", sa: "श्व" }, // this is busted
+    ],
+  },
 };
 
 export default data;

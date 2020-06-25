@@ -5,7 +5,7 @@ import {
   ChoicesButtons,
 } from "./../styledcomponents/LetterStyles";
 
-const Consonants = ({ data, score }) => {
+const Consonants = ({ data, score, settings }) => {
   const { characters } = data;
   const types = Array.from(new Set(characters.map((x) => x.type)));
   const classes = Array.from(new Set(characters.map((x) => x.class)));
@@ -58,11 +58,12 @@ const Consonants = ({ data, score }) => {
     // console.log(correctElements);
     // console.log(currentCharacter);
     if (
-      correctElements.type &&
-      correctElements.class &&
-      correctElements.voiced &&
-      (correctElements.aspirated || !currentCharacter.aspirated) &&
-      correctElements.en
+      correctElements.en &&
+      (!settings.useClassifiers ||
+        (correctElements.type &&
+          correctElements.class &&
+          correctElements.voiced &&
+          (correctElements.aspirated || !currentCharacter.aspirated)))
     ) {
       setCorrectElements({
         type: false,
@@ -77,18 +78,29 @@ const Consonants = ({ data, score }) => {
       );
       setClicks(0);
     }
-  }, [correctElements, characters, clicks, currentCharacter, score]);
+  }, [
+    correctElements,
+    characters,
+    clicks,
+    currentCharacter,
+    score,
+    settings.useClassifiers,
+  ]);
 
   return (
     <>
       <BigCharacter>{currentCharacter.sa}</BigCharacter>
       <ChoicesButtons>
         <ButtonList categoryData={englishLetters} categoryId={"en"} />
-        <ButtonList categoryData={types} categoryId={"type"} />
-        <ButtonList categoryData={classes} categoryId={"class"} />
-        <ButtonList categoryData={voiced} categoryId={"voiced"} />
-        {currentCharacter.aspirated ? (
-          <ButtonList categoryData={aspirated} categoryId={"aspirated"} />
+        {settings.useClassifiers ? (
+          <>
+            <ButtonList categoryData={types} categoryId={"type"} />
+            <ButtonList categoryData={classes} categoryId={"class"} />
+            <ButtonList categoryData={voiced} categoryId={"voiced"} />
+            {currentCharacter.aspirated ? (
+              <ButtonList categoryData={aspirated} categoryId={"aspirated"} />
+            ) : null}
+          </>
         ) : null}
       </ChoicesButtons>
     </>

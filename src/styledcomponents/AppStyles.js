@@ -15,3 +15,17 @@ export const Wrapper = styled.main`
     padding: 10px;
   }
 `;
+
+export const SettingsDiv = styled.div`
+  margin-bottom: auto;
+  & p {
+    margin: 0;
+  }
+  & label {
+    display: inline-flex;
+    align-items: baseline;
+    & input {
+      margin-right: 5px;
+    }
+  }
+`;

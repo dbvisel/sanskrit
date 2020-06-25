@@ -24,6 +24,9 @@ export const ScoreDiv = styled.div`
     margin-top: var(--outsidePadding);
   }
   @media (max-width: 767px) {
+    & h2 {
+      font-size: 18px;
+    }
     & ul {
       font-size: 16px;
       line-height: 20px;

@@ -2,12 +2,19 @@ import React from "react";
 import TopMenu from "./components/TopMenu";
 import Vowels from "./components/Vowels";
 import Consonants from "./components/Consonants";
+import SpecialConjuncts from "./components/SpecialConjuncts";
 import Scores from "./components/Scores";
+import Settings from "./components/Settings";
 import data from "./assets/data.js";
 import { Wrapper } from "./styledcomponents/AppStyles";
 
 const dataIds = Object.keys(data);
 const dataTitles = dataIds.map((x) => data[x].title);
+
+const initialSettings = {
+  useClassifiers: false,
+  useUncommonCharacters: false,
+};
 
 const makeIds = () => {
   const idList = [];
@@ -22,6 +29,7 @@ const makeIds = () => {
 function App() {
   const [selected, setSelected] = React.useState(dataIds[0]);
   const [score, setScore] = React.useState(makeIds());
+  const [settings, setSettings] = React.useState(initialSettings);
 
   const calculateScore = (id, clicks) => {
     const thisId = score.filter((x) => x.id === id)[0];
@@ -44,15 +52,32 @@ function App() {
         setSelected={(e) => setSelected(e)}
       />
       {selected === "vowels" ? (
-        <Vowels data={data.vowels} score={calculateScore} />
+        <Vowels data={data.vowels} score={calculateScore} settings={settings} />
       ) : selected === "consonants" ? (
-        <Consonants data={data.consonants} score={calculateScore} />
+        <Consonants
+          data={data.consonants}
+          score={calculateScore}
+          settings={settings}
+        />
+      ) : selected === "specialConjuncts" ? (
+        <SpecialConjuncts
+          data={data.specialConjuncts}
+          score={calculateScore}
+          settings={settings}
+        />
       ) : selected === "scores" ? (
         <Scores
           data={data}
           score={score}
           resetScores={() => {
             setScore(makeIds());
+          }}
+        />
+      ) : selected === "settings" ? (
+        <Settings
+          settings={settings}
+          outSettings={(x) => {
+            setSettings(x);
           }}
         />
       ) : null}

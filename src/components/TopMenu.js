@@ -12,6 +12,7 @@ const TopMenu = ({ ids, titles, selected, setSelected }) => {
           className={x === selected ? "on" : ""}
           onClick={(x) => {
             x.preventDefault();
+            console.log(x.target.id);
             setSelected(x.target.id);
           }}
         >
@@ -27,6 +28,16 @@ const TopMenu = ({ ids, titles, selected, setSelected }) => {
         }}
       >
         Scores
+      </a>{" "}
+      <a
+        href={`/#settings`}
+        className={selected === "settings" ? "on" : ""}
+        onClick={(x) => {
+          x.preventDefault();
+          setSelected("settings");
+        }}
+      >
+        Settings
       </a>
     </TopMenuNav>
   );

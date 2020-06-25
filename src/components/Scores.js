@@ -2,6 +2,7 @@ import React from "react";
 import { ScoreDiv, ScoreSection } from "./../styledcomponents/ScoreStyles";
 
 const Scores = ({ data, score, resetScores }) => {
+  console.log(score);
   const ScoreBlock = ({ id }) => {
     const scoreData = score
       .filter((x) => x.id.substring(0, id.length) === id)
@@ -57,6 +58,7 @@ const Scores = ({ data, score, resetScores }) => {
     <ScoreSection>
       <ScoreBlock id={"vowels"} />
       <ScoreBlock id={"consonants"} />
+      <ScoreBlock id={"specialConjuncts"} />
       <a
         href="/#"
         onClick={(e) => {
