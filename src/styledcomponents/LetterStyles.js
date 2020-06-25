@@ -17,6 +17,7 @@ export const ButtonListUl = styled.ul`
   padding: 0;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   & li {
     font-size: 24px;
     border-radius: var(--insidePadding);

@@ -20,4 +20,17 @@ export const ScoreDiv = styled.div`
       }
     }
   }
+  & + div {
+    margin-top: var(--outsidePadding);
+  }
+`;
+
+export const ScoreSection = styled.div`
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  & > a {
+    margin-top: var(--outsidePadding);
+  }
 `;

@@ -1,6 +1,7 @@
 import React from "react";
 import TopMenu from "./components/TopMenu";
 import Vowels from "./components/Vowels";
+import Consonants from "./components/Consonants";
 import Scores from "./components/Scores";
 import data from "./assets/data.js";
 import { Wrapper } from "./styledcomponents/AppStyles";
@@ -44,8 +45,16 @@ function App() {
       />
       {selected === "vowels" ? (
         <Vowels data={data.vowels} score={calculateScore} />
+      ) : selected === "consonants" ? (
+        <Consonants data={data.consonants} score={calculateScore} />
       ) : selected === "scores" ? (
-        <Scores data={data} score={score} />
+        <Scores
+          data={data}
+          score={score}
+          resetScores={() => {
+            setScore(makeIds());
+          }}
+        />
       ) : null}
     </Wrapper>
   );

@@ -57,7 +57,7 @@ const Vowels = ({ data, score }) => {
       correctElements.en
     ) {
       setCorrectElements({ length: false, complexity: false, en: false });
-      score(`vowels_${characters.indexOf(currentCharacter)}`, clicks - 3);
+      score(`vowels_${characters.indexOf(currentCharacter)}`, clicks);
       setCurrentCharacter(
         characters[Math.floor(Math.random() * characters.length)]
       );
