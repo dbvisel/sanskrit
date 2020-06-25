@@ -83,13 +83,13 @@ const Consonants = ({ data, score }) => {
     <>
       <BigCharacter>{currentCharacter.sa}</BigCharacter>
       <ChoicesButtons>
+        <ButtonList categoryData={englishLetters} categoryId={"en"} />
         <ButtonList categoryData={types} categoryId={"type"} />
         <ButtonList categoryData={classes} categoryId={"class"} />
         <ButtonList categoryData={voiced} categoryId={"voiced"} />
         {currentCharacter.aspirated ? (
           <ButtonList categoryData={aspirated} categoryId={"aspirated"} />
         ) : null}
-        <ButtonList categoryData={englishLetters} categoryId={"en"} />
       </ChoicesButtons>
     </>
   );

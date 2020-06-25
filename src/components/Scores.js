@@ -3,7 +3,6 @@ import { ScoreDiv, ScoreSection } from "./../styledcomponents/ScoreStyles";
 
 const Scores = ({ data, score, resetScores }) => {
   const ScoreBlock = ({ id }) => {
-    console.log(data);
     const scoreData = score
       .filter((x) => x.id.substring(0, id.length) === id)
       .sort((a, b) => {
@@ -11,7 +10,6 @@ const Scores = ({ data, score, resetScores }) => {
         if (b.times > a.times) return 1;
         return 0;
       });
-    console.log(scoreData);
     return (
       <ScoreDiv>
         <h2>{data[id].title}</h2>

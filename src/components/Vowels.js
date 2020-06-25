@@ -69,9 +69,9 @@ const Vowels = ({ data, score }) => {
     <>
       <BigCharacter>{currentCharacter.sa}</BigCharacter>
       <ChoicesButtons>
+        <ButtonList categoryData={englishLetters} categoryId={"en"} />
         <ButtonList categoryData={lengths} categoryId={"length"} />
         <ButtonList categoryData={complexities} categoryId={"complexity"} />
-        <ButtonList categoryData={englishLetters} categoryId={"en"} />
       </ChoicesButtons>
     </>
   );
