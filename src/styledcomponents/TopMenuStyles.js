@@ -7,6 +7,7 @@ export const TopMenuNav = styled.nav`
   margin-bottom: auto;
   & a {
     border-bottom: 2px solid transparent;
+    white-space: nowrap;
     & + a {
       margin-left: var(--outsidePadding);
     }
