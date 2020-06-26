@@ -7,6 +7,7 @@ import SpecialConjuncts from "./components/SpecialConjuncts";
 import Scores from "./components/Scores";
 import Settings from "./components/Settings";
 import data from "./assets/data.js";
+import useLocalStorage from "./hooks/useLocalStorage";
 import { Wrapper } from "./styledcomponents/AppStyles";
 
 const dataIds = Object.keys(data);
@@ -34,8 +35,11 @@ const makeIds = () => {
 
 function App() {
   const [selected, setSelected] = React.useState(dataIds[0]);
-  const [score, setScore] = React.useState(makeIds());
-  const [settings, setSettings] = React.useState(initialSettings);
+  const [score, setScore] = useLocalStorage("sanskritScores", makeIds());
+  const [settings, setSettings] = useLocalStorage(
+    "sanskritSettings",
+    initialSettings
+  );
 
   const calculateScore = (id, clicks, idealClicks) => {
     const thisId = score.filter((x) => x.id === id)[0];

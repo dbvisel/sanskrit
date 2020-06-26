@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const BigCharacter = styled.span`
   font-size: 25vmin;
   font-family: var(--sanskritFont);
+  user-select: none;
 `;
 
 export const ChoicesButtons = styled.div`
