@@ -1,5 +1,7 @@
 # sanskrit practice app
 
+Working version is up at https://sanskrit.netlify.app
+
 ## REMEMBER:
 
 Font used is Sanskrit 2003, from here: http://salrc.uchicago.edu/resources/fonts/available/sanskrit/sanskrit2003.shtml
@@ -7,4 +9,8 @@ Font used is Sanskrit 2003, from here: http://salrc.uchicago.edu/resources/fonts
 ## TODO:
 
 - separate out consonants in some way? Think about this.
-- maybe separate out en / classifiers? checkbox list on settings
+- maybe no repeat characters?
+
+## known issues
+
+ - weird tracers around some characters in Mac Chrome
