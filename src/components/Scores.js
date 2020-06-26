@@ -7,6 +7,8 @@ const accuracy = (idealClicks, clicks) => {
 };
 
 const Scores = ({ data, score, resetScores }) => {
+  // console.log(score);
+  // console.log(data);
   const ScoreBlock = ({ id }) => {
     const scoreData = score
       .filter((x) => x.id.substring(0, id.length) === id)

@@ -4,6 +4,8 @@ export const BigCharacter = styled.span`
   font-size: 25vmin;
   font-family: var(--sanskritFont);
   user-select: none;
+  width: 100%;
+  text-align: center;
 `;
 
 export const ChoicesButtons = styled.div`

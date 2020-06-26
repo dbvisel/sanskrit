@@ -42,6 +42,10 @@ function App() {
   );
 
   const calculateScore = (id, clicks, idealClicks) => {
+    // console.log(id);
+    // console.log(
+    //   data[id.split("_")[0]].characters[parseInt(id.split("_")[1], 10)]
+    // );
     const thisId = score.filter((x) => x.id === id)[0];
     thisId.repetitions++;
     thisId.clicks += clicks;

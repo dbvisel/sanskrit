@@ -60,7 +60,7 @@ const Vowels = ({ data, score, settings }) => {
     ) {
       setCorrectElements({ length: false, complexity: false, en: false });
       score(
-        `vowels_${characters.indexOf(currentCharacter)}`,
+        `vowels_${data.characters.indexOf(currentCharacter)}`,
         clicks,
         settings.useClassifiers ? 3 : 1
       );
@@ -71,6 +71,7 @@ const Vowels = ({ data, score, settings }) => {
     }
   }, [
     correctElements,
+    data.characters,
     characters,
     clicks,
     currentCharacter,
