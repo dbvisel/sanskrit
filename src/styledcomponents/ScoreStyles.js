@@ -4,6 +4,8 @@ export const ScoreDiv = styled.div`
   margin-bottom: auto;
   & h2 {
     text-align: center;
+    padding-bottom: var(--outsidePadding);
+    border-bottom: 2px solid var(--text);
   }
   & ul {
     list-style-type: none;
@@ -14,6 +16,7 @@ export const ScoreDiv = styled.div`
     & li {
       display: flex;
       justify-content: space-between;
+      padding: 4px 0;
       & span {
         min-width: 120px;
         text-align: center;
@@ -42,7 +45,14 @@ export const ScoreSection = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
   & > a {
     margin-top: var(--outsidePadding);
+    border-top: 2px solid var(--text);
+    padding-top: var(--outsidePadding);
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
   }
 `;

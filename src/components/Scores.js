@@ -42,7 +42,9 @@ const Scores = ({ data, score, resetScores }) => {
           </li>
           {scoreData.map((letter, index) => (
             <li key={index}>
-              <span>{data[id].characters[letter.order].sa}</span>
+              <span className="sanskrit">
+                {data[id].characters[letter.order].sa}
+              </span>
               <span>{data[id].characters[letter.order].en}</span>
               <span>{letter.repetitions}</span>
               <span>
@@ -59,6 +61,7 @@ const Scores = ({ data, score, resetScores }) => {
     <ScoreSection>
       <ScoreBlock id={"vowels"} />
       <ScoreBlock id={"consonants"} />
+      <ScoreBlock id={"additionalCharacters"} />
       <ScoreBlock id={"specialConjuncts"} />
       <a
         href="/#"

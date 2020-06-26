@@ -304,15 +304,23 @@ const data = {
       },
     ],
   },
-  additionalCharacters: { title: `Additional characters`, characters: [] },
+  additionalCharacters: {
+    title: `Additional characters`,
+    characters: [
+      { en: "anusvāra", sa: "ं" },
+      { en: "visarga", sa: "ः" },
+      { en: "daṇḍa", sa: "।" },
+      { en: "virāma", sa: "◌्" },
+    ],
+  },
   specialConjuncts: {
     title: `Special conjuncts`,
     characters: [
       { en: "kṣa", sa: "क्ष" },
       { en: "jña", sa: "ज्ञ" },
-      { en: "śca", sa: "श्च" }, // this is busted
+      { en: "śca", sa: "श्च" },
       { en: "śra", sa: "श्र" },
-      { en: "śva", sa: "श्व" }, // this is busted
+      { en: "śva", sa: "श्व" },
     ],
   },
 };

@@ -2,6 +2,7 @@ import React from "react";
 import TopMenu from "./components/TopMenu";
 import Vowels from "./components/Vowels";
 import Consonants from "./components/Consonants";
+import AdditionalCharacters from "./components/AdditionalCharacters";
 import SpecialConjuncts from "./components/SpecialConjuncts";
 import Scores from "./components/Scores";
 import Settings from "./components/Settings";
@@ -62,6 +63,12 @@ function App() {
       ) : selected === "consonants" ? (
         <Consonants
           data={data.consonants}
+          score={calculateScore}
+          settings={settings}
+        />
+      ) : selected === "additionalCharacters" ? (
+        <AdditionalCharacters
+          data={data.additionalCharacters}
           score={calculateScore}
           settings={settings}
         />

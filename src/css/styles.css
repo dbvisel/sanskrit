@@ -28,6 +28,13 @@
   font-style: italic;
 }
 
+@font-face {
+  font-family: "Sanskrit 2003";
+  src: url("./../fonts/Sanskrit2003.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
   --white: #fff;
   --black: #000;
@@ -37,7 +44,9 @@
   --insidePadding: 10px;
   --headerHeight: 100px;
   --footerHeight: 101px;
-  font-family: "Inter", sans-serif;
+  --uiFont: "Inter", sans-serif;
+  --sanskritFont: "Sanskrit 2003";
+  font-family: var(--uiFont);
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
 }
@@ -60,4 +69,8 @@ a {
 a:hover {
   color: var(--text);
   text-decoration: underline;
+}
+
+.sanskrit {
+  font-family: var(--sanskritFont);
 }

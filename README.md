@@ -1,7 +1,10 @@
 # sanskrit practice app
 
-TODO:
+## REMEMBER:
+
+Font used is Sanskrit 2003, from here: http://salrc.uchicago.edu/resources/fonts/available/sanskrit/sanskrit2003.shtml
+
+## TODO:
 
 - Save score to localstorage
-- Add in settings?
-- add in other letters
+- separate out consonants in some way? Think about this.
