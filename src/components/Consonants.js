@@ -72,7 +72,11 @@ const Consonants = ({ data, score, settings }) => {
         aspirated: false,
         en: false,
       });
-      score(`consonants_${characters.indexOf(currentCharacter)}`, clicks);
+      score(
+        `consonants_${characters.indexOf(currentCharacter)}`,
+        clicks,
+        settings.useClassifiers ? 5 : 1
+      );
       setCurrentCharacter(
         characters[Math.floor(Math.random() * characters.length)]
       );

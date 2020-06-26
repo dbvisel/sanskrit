@@ -20,7 +20,12 @@ const makeIds = () => {
   const idList = [];
   for (let i = 0; i < dataIds.length; i++) {
     for (let j = 0; j < data[dataIds[i]].characters.length; j++) {
-      idList.push({ id: `${dataIds[i]}_${j}`, times: 0, clicks: 0 });
+      idList.push({
+        id: `${dataIds[i]}_${j}`,
+        repetitions: 0,
+        clicks: 0,
+        idealClicks: 0,
+      });
     }
   }
   return idList;
@@ -31,10 +36,11 @@ function App() {
   const [score, setScore] = React.useState(makeIds());
   const [settings, setSettings] = React.useState(initialSettings);
 
-  const calculateScore = (id, clicks) => {
+  const calculateScore = (id, clicks, idealClicks) => {
     const thisId = score.filter((x) => x.id === id)[0];
-    thisId.times++;
+    thisId.repetitions++;
     thisId.clicks += clicks;
+    thisId.idealClicks += idealClicks;
     const newScores = score.slice();
     setScore(newScores);
   };

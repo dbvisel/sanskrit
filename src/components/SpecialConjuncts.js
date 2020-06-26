@@ -49,7 +49,11 @@ const SpecialConjuncts = ({ data, score, settings }) => {
     // console.log(currentCharacter);
     if (correctElements.en) {
       setCorrectElements({ en: false });
-      score(`specialConjuncts_${characters.indexOf(currentCharacter)}`, clicks);
+      score(
+        `specialConjuncts_${characters.indexOf(currentCharacter)}`,
+        clicks,
+        1
+      );
       setCurrentCharacter(
         characters[Math.floor(Math.random() * characters.length)]
       );

@@ -1,14 +1,25 @@
 import React from "react";
 import { ScoreDiv, ScoreSection } from "./../styledcomponents/ScoreStyles";
 
+const accuracy = (idealClicks, clicks) => {
+  const percentage = parseInt((100 * idealClicks) / clicks, 10);
+  return percentage ? percentage : 0;
+};
+
 const Scores = ({ data, score, resetScores }) => {
-  console.log(score);
   const ScoreBlock = ({ id }) => {
     const scoreData = score
       .filter((x) => x.id.substring(0, id.length) === id)
+      .map((x) => {
+        return {
+          order: parseInt(x.id.substring(id.length + 1), 10),
+          repetitions: x.repetitions,
+          accuracy: accuracy(x.idealClicks, x.clicks),
+        };
+      })
       .sort((a, b) => {
-        if (a.times > b.times) return -1;
-        if (b.times > a.times) return 1;
+        if (a.accuracy > b.accuracy) return -1;
+        if (b.accuracy > a.accuracy) return 1;
         return 0;
       });
     return (
@@ -23,30 +34,20 @@ const Scores = ({ data, score, resetScores }) => {
               <strong>English</strong>
             </span>
             <span>
-              <strong>Times</strong>
+              <strong>Repetitions</strong>
             </span>
             <span>
-              <strong>Clicks</strong>
+              <strong>Accuracy</strong>
             </span>
           </li>
           {scoreData.map((letter, index) => (
             <li key={index}>
+              <span>{data[id].characters[letter.order].sa}</span>
+              <span>{data[id].characters[letter.order].en}</span>
+              <span>{letter.repetitions}</span>
               <span>
-                {
-                  data[id].characters[
-                    parseInt(letter.id.substring(id.length + 1), 10)
-                  ].sa
-                }
+                {letter.accuracy ? String(letter.accuracy) + "%" : "—"}
               </span>
-              <span>
-                {
-                  data[id].characters[
-                    parseInt(letter.id.substring(id.length + 1), 10)
-                  ].en
-                }
-              </span>
-              <span>{letter.times}</span>
-              <span>{letter.clicks}</span>
             </li>
           ))}
         </ul>
