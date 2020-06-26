@@ -16,6 +16,7 @@ const dataTitles = dataIds.map((x) => data[x].title);
 const initialSettings = {
   useClassifiers: false,
   useUncommonCharacters: false,
+  consonantTypes: { nasal: true, stop: true, semivowel: true, sibilant: true },
 };
 
 const makeIds = () => {

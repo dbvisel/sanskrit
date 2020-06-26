@@ -6,7 +6,12 @@ import {
 } from "./../styledcomponents/LetterStyles";
 
 const Consonants = ({ data, score, settings }) => {
-  const { characters } = data;
+  const allowedtypes = Object.keys(settings.consonantTypes).filter(
+    (x) => settings.consonantTypes[x]
+  );
+  const characters = data.characters.filter(
+    (x) => allowedtypes.indexOf(x.type) > -1
+  );
   const types = Array.from(new Set(characters.map((x) => x.type)));
   const classes = Array.from(new Set(characters.map((x) => x.class)));
   const voiced = Array.from(new Set(characters.map((x) => x.voiced)));
@@ -73,7 +78,7 @@ const Consonants = ({ data, score, settings }) => {
         en: false,
       });
       score(
-        `consonants_${characters.indexOf(currentCharacter)}`,
+        `consonants_${data.characters.indexOf(currentCharacter)}`,
         clicks,
         settings.useClassifiers ? 5 : 1
       );
@@ -85,6 +90,7 @@ const Consonants = ({ data, score, settings }) => {
   }, [
     correctElements,
     characters,
+    data.characters,
     clicks,
     currentCharacter,
     score,

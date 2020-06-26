@@ -19,13 +19,17 @@ export const Wrapper = styled.main`
 export const SettingsDiv = styled.div`
   margin-bottom: auto;
   & p {
-    margin: 0;
+    margin: 0 0 var(--outsidePadding) 0;
   }
   & label {
     display: inline-flex;
     align-items: baseline;
-    & input {
+    user-select: none;
+    & input[type="checkbox"] {
       margin-right: 5px;
+    }
+    + label input[type="checkbox"] {
+      margin-left: 10px;
     }
   }
 `;
