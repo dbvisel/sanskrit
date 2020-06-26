@@ -10,6 +10,8 @@ Font used is Sanskrit 2003, from here: http://salrc.uchicago.edu/resources/fonts
 
 - separate out consonants in multiple ways? Think about this.
 - two-layer menu?
+- add in more conjuncts?
+- bigger buttons on mobile?
 
 ## known issues
 
