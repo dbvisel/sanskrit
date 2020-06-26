@@ -54,9 +54,13 @@ const SpecialConjuncts = ({ data, score, settings }) => {
         clicks,
         1
       );
-      setCurrentCharacter(
-        characters[Math.floor(Math.random() * characters.length)]
-      );
+      const oldCharacter = currentCharacter;
+      let newCharacter = oldCharacter;
+      do {
+        newCharacter =
+          characters[Math.floor(Math.random() * characters.length)];
+      } while (oldCharacter === newCharacter);
+      setCurrentCharacter(newCharacter);
       setClicks(0);
     }
   }, [correctElements, characters, clicks, currentCharacter, score]);

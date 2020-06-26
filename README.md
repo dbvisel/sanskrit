@@ -8,8 +8,8 @@ Font used is Sanskrit 2003, from here: http://salrc.uchicago.edu/resources/fonts
 
 ## TODO:
 
-- separate out consonants in some way? Think about this.
-- maybe no repeat characters?
+- separate out consonants in multiple ways? Think about this.
+- two-layer menu?
 
 ## known issues
 

@@ -64,9 +64,13 @@ const Vowels = ({ data, score, settings }) => {
         clicks,
         settings.useClassifiers ? 3 : 1
       );
-      setCurrentCharacter(
-        characters[Math.floor(Math.random() * characters.length)]
-      );
+      const oldCharacter = currentCharacter;
+      let newCharacter = oldCharacter;
+      do {
+        newCharacter =
+          characters[Math.floor(Math.random() * characters.length)];
+      } while (oldCharacter === newCharacter);
+      setCurrentCharacter(newCharacter);
       setClicks(0);
     }
   }, [
