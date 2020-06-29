@@ -9,7 +9,7 @@ Font used is Sanskrit 2003, from here: http://salrc.uchicago.edu/resources/fonts
 ## TODO:
 
 - separate out consonants in multiple ways? Think about this.
-- two-layer menu?
+- move settings into side menu
 - add in more conjuncts?
 - bigger buttons on mobile?
 
