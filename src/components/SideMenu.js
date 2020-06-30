@@ -14,6 +14,26 @@ const SideMenu = ({
   outSettings,
 }) => {
   const changeSettings = makeChangeSettings(settings);
+
+  const CheckboxList = ({ classification, list }) => {
+    return (
+      <>
+        {list.map((x, index) => (
+          <label key={index}>
+            <input
+              type="checkbox"
+              checked={settings[classification][x.id]}
+              onChange={() => {
+                outSettings(changeSettings(classification, x.id));
+              }}
+            ></input>
+            {x.name}
+          </label>
+        ))}
+      </>
+    );
+  };
+
   const menuSettings = [
     {
       id: "vowels",
@@ -66,101 +86,54 @@ const SideMenu = ({
             <label>
               <strong>Include by type:</strong>
             </label>
-            <label>
-              <input
-                type="checkbox"
-                checked={settings.consonantTypes.stop}
-                onChange={() => {
-                  outSettings(changeSettings("consonantTypes", "stop"));
-                }}
-              ></input>
-              Stops
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                checked={settings.consonantTypes.nasal}
-                onChange={() => {
-                  outSettings(changeSettings("consonantTypes", "nasal"));
-                }}
-              ></input>
-              Nasals
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                checked={settings.consonantTypes.semivowel}
-                onChange={() => {
-                  outSettings(changeSettings("consonantTypes", "semivowel"));
-                }}
-              ></input>
-              Semivowels
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                checked={settings.consonantTypes.sibilant}
-                onChange={(x) => {
-                  outSettings(changeSettings("consonantTypes", "sibilant"));
-                }}
-              ></input>
-              Sibilants
-            </label>
+            <CheckboxList
+              classification={"consonantTypes"}
+              list={[
+                { id: "stop", name: "Stops" },
+                { id: "nasal", name: "Nasals" },
+                { id: "semivowel", name: "Semivowels" },
+                { id: "sibilant", name: "Sibilants" },
+              ]}
+            />
           </p>
           <p>
             <label>
               <strong>Include by class:</strong>
             </label>
+            <CheckboxList
+              classification={"consonantClasses"}
+              list={[
+                { id: "gutteral", name: "Gutterals" },
+                { id: "palatal", name: "Palatals" },
+                { id: "retroflex", name: "Retroflexes" },
+                { id: "dental", name: "Dentals" },
+                { id: "labial", name: "Labials" },
+              ]}
+            />
+          </p>
+          <p>
             <label>
-              <input
-                type="checkbox"
-                checked={settings.consonantClasses.gutteral}
-                onChange={() => {
-                  outSettings(changeSettings("consonantClasses", "gutteral"));
-                }}
-              ></input>
-              Gutteral
+              <strong>Include by voiced:</strong>
             </label>
+            <CheckboxList
+              classification={"consonantVoiced"}
+              list={[
+                { id: "voiced", name: "Voiced" },
+                { id: "unvoiced", name: "Unvoiced" },
+              ]}
+            />
+          </p>
+          <p>
             <label>
-              <input
-                type="checkbox"
-                checked={settings.consonantClasses.palatal}
-                onChange={() => {
-                  outSettings(changeSettings("consonantClasses", "palatal"));
-                }}
-              ></input>
-              Palatal
+              <strong>Include by aspiration:</strong>
             </label>
-            <label>
-              <input
-                type="checkbox"
-                checked={settings.consonantClasses.retroflex}
-                onChange={() => {
-                  outSettings(changeSettings("consonantClasses", "retroflex"));
-                }}
-              ></input>
-              Retroflex
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                checked={settings.consonantClasses.dental}
-                onChange={(x) => {
-                  outSettings(changeSettings("consonantClasses", "dental"));
-                }}
-              ></input>
-              Dental
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                checked={settings.consonantClasses.labial}
-                onChange={(x) => {
-                  outSettings(changeSettings("consonantClasses", "labial"));
-                }}
-              ></input>
-              Labial
-            </label>
+            <CheckboxList
+              classification={"consonantAspirated"}
+              list={[
+                { id: "aspirated", name: "Aspirated" },
+                { id: "unaspirated", name: "Unaspirated" },
+              ]}
+            />
           </p>
         </SettingDiv>
       ),

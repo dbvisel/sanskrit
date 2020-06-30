@@ -12,9 +12,17 @@ const Consonants = ({ data, score, settings }) => {
   const allowedClasses = Object.keys(settings.consonantClasses).filter(
     (x) => settings.consonantClasses[x]
   );
+  const allowedVoiced = Object.keys(settings.consonantVoiced).filter(
+    (x) => settings.consonantVoiced[x]
+  );
+  const allowedAspirated = Object.keys(settings.consonantAspirated).filter(
+    (x) => settings.consonantAspirated[x]
+  );
   const characters = data.characters
     .filter((x) => allowedTypes.indexOf(x.type) > -1)
-    .filter((x) => allowedClasses.indexOf(x.class) > -1);
+    .filter((x) => allowedClasses.indexOf(x.class) > -1)
+    .filter((x) => allowedVoiced.indexOf(x.voiced) > -1)
+    .filter((x) => allowedAspirated.indexOf(x.aspirated) > -1);
   const types = Array.from(new Set(characters.map((x) => x.type)));
   const classes = Array.from(new Set(characters.map((x) => x.class)));
   const voiced = Array.from(new Set(characters.map((x) => x.voiced)));

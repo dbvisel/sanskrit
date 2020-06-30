@@ -30,9 +30,10 @@ const initialSettings = {
     dental: true,
     labial: true,
   },
+  consonantVoiced: { voiced: true, unvoiced: true },
+  consonantAspirated: { aspirated: true, unaspirated: true },
 };
 
-console.log(data.consonants.characters.map((x) => x.class));
 const makeIds = () => {
   const idList = [];
   for (let i = 0; i < dataIds.length; i++) {
