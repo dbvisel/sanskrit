@@ -1,26 +1,10 @@
 import React from "react";
+import makeChangeSettings from "./../modules/changeSettings";
 import { SettingsDiv } from "./../styledcomponents/AppStyles";
 
 const Settings = ({ settings, outSettings }) => {
-  const changeSetting = (thisSetting, thisSubsetting) => {
-    const newSettings = Object.assign({}, settings);
-    if (thisSubsetting) {
-      newSettings[thisSetting][thisSubsetting] = !settings[thisSetting][
-        thisSubsetting
-      ];
-      if (
-        !Object.keys(newSettings[thisSetting])
-          .map((x) => newSettings[thisSetting][x])
-          .reduce((x, y) => x || y)
-      ) {
-        // if all keys of thisSetting are set to false, force this one to be true
-        newSettings[thisSetting][thisSubsetting] = true;
-      }
-    } else {
-      newSettings[thisSetting] = !settings[thisSetting];
-    }
-    outSettings(newSettings);
-  };
+  const changeSettings = makeChangeSettings(settings);
+
   return (
     <SettingsDiv>
       <p>
@@ -29,7 +13,7 @@ const Settings = ({ settings, outSettings }) => {
             type="checkbox"
             checked={settings.useClassifiers}
             onChange={() => {
-              changeSetting("useClassifiers");
+              outSettings(changeSettings("useClassifiers"));
             }}
           ></input>{" "}
           Use classifiers
@@ -41,7 +25,7 @@ const Settings = ({ settings, outSettings }) => {
             type="checkbox"
             checked={settings.useUncommonCharacters}
             onChange={() => {
-              changeSetting("useUncommonCharacters");
+              outSettings(changeSettings("useUncommonCharacters"));
             }}
           ></input>
           Include uncommon characters
@@ -55,7 +39,7 @@ const Settings = ({ settings, outSettings }) => {
             type="checkbox"
             checked={settings.consonantTypes.stop}
             onChange={() => {
-              changeSetting("consonantTypes", "stop");
+              outSettings(changeSettings("consonantTypes", "stop"));
             }}
           ></input>
           Stops
@@ -65,7 +49,7 @@ const Settings = ({ settings, outSettings }) => {
             type="checkbox"
             checked={settings.consonantTypes.nasal}
             onChange={() => {
-              changeSetting("consonantTypes", "nasal");
+              outSettings(changeSettings("consonantTypes", "nasal"));
             }}
           ></input>
           Nasals
@@ -75,7 +59,7 @@ const Settings = ({ settings, outSettings }) => {
             type="checkbox"
             checked={settings.consonantTypes.semivowel}
             onChange={() => {
-              changeSetting("consonantTypes", "semivowel");
+              outSettings(changeSettings("consonantTypes", "semivowel"));
             }}
           ></input>
           Semivowels
@@ -85,10 +69,7 @@ const Settings = ({ settings, outSettings }) => {
             type="checkbox"
             checked={settings.consonantTypes.sibilant}
             onChange={(x) => {
-              const newSettings = Object.assign({}, settings);
-              newSettings.consonantTypes.sibilant = !settings.consonantTypes
-                .sibilant;
-              outSettings(newSettings);
+              outSettings(changeSettings("consonantTypes", "sibilant"));
             }}
           ></input>
           Sibilants

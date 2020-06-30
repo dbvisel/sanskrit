@@ -6,12 +6,15 @@ import {
 } from "./../styledcomponents/LetterStyles";
 
 const Consonants = ({ data, score, settings }) => {
-  const allowedtypes = Object.keys(settings.consonantTypes).filter(
+  const allowedTypes = Object.keys(settings.consonantTypes).filter(
     (x) => settings.consonantTypes[x]
   );
-  const characters = data.characters.filter(
-    (x) => allowedtypes.indexOf(x.type) > -1
+  const allowedClasses = Object.keys(settings.consonantClasses).filter(
+    (x) => settings.consonantClasses[x]
   );
+  const characters = data.characters
+    .filter((x) => allowedTypes.indexOf(x.type) > -1)
+    .filter((x) => allowedClasses.indexOf(x.class) > -1);
   const types = Array.from(new Set(characters.map((x) => x.type)));
   const classes = Array.from(new Set(characters.map((x) => x.class)));
   const voiced = Array.from(new Set(characters.map((x) => x.voiced)));
@@ -36,28 +39,30 @@ const Consonants = ({ data, score, settings }) => {
     setCorrectElements(newCorrect);
   };
 
-  const ButtonList = ({ categoryData, categoryId }) => (
-    <ButtonListUl>
-      {categoryData
-        .filter((x) => x !== null)
-        .map((x, index) => (
-          <li
-            className={
-              correctElements[categoryId] && currentCharacter[categoryId] === x
-                ? "on"
-                : ""
-            }
-            key={index}
-            id={x}
-            onClick={() => {
-              check(x, categoryId);
-            }}
-          >
-            {x}
-          </li>
-        ))}
-    </ButtonListUl>
-  );
+  const ButtonList = ({ categoryData, categoryId }) =>
+    categoryData.filter((x) => x !== null).length > 1 ? (
+      <ButtonListUl>
+        {categoryData
+          .filter((x) => x !== null)
+          .map((x, index) => (
+            <li
+              className={
+                correctElements[categoryId] &&
+                currentCharacter[categoryId] === x
+                  ? "on"
+                  : ""
+              }
+              key={index}
+              id={x}
+              onClick={() => {
+                check(x, categoryId);
+              }}
+            >
+              {x}
+            </li>
+          ))}
+      </ButtonListUl>
+    ) : null;
 
   React.useEffect(() => {
     // console.log(correctElements);

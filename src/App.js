@@ -23,8 +23,16 @@ const initialSettings = {
   useClassifiers: false,
   useUncommonCharacters: false,
   consonantTypes: { nasal: true, stop: true, semivowel: true, sibilant: true },
+  consonantClasses: {
+    gutteral: true,
+    palatal: true,
+    retroflex: true,
+    dental: true,
+    labial: true,
+  },
 };
 
+console.log(data.consonants.characters.map((x) => x.class));
 const makeIds = () => {
   const idList = [];
   for (let i = 0; i < dataIds.length; i++) {
@@ -130,6 +138,10 @@ function App() {
         setSelected={(e) => setSelected(e)}
         closeMenu={() => {
           setModalMenuOpen(false);
+        }}
+        settings={settings}
+        outSettings={(x) => {
+          setSettings(x);
         }}
       />
     </OuterWrapper>
