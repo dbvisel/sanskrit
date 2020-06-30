@@ -2,8 +2,6 @@ import React from "react";
 import { ModalMenu, SettingDiv } from "./../styledcomponents/MenuStyles.js";
 import makeChangeSettings from "./../modules/changeSettings";
 
-//TODO: Refactor this!
-
 const SideMenu = ({
   ids,
   titles,
@@ -89,10 +87,10 @@ const SideMenu = ({
             <CheckboxList
               classification={"consonantTypes"}
               list={[
-                { id: "stop", name: "Stops" },
-                { id: "nasal", name: "Nasals" },
-                { id: "semivowel", name: "Semivowels" },
-                { id: "sibilant", name: "Sibilants" },
+                { id: "stop", name: "stops" },
+                { id: "nasal", name: "nasals" },
+                { id: "semivowel", name: "semivowels" },
+                { id: "sibilant", name: "sibilants" },
               ]}
             />
           </p>
@@ -103,23 +101,23 @@ const SideMenu = ({
             <CheckboxList
               classification={"consonantClasses"}
               list={[
-                { id: "gutteral", name: "Gutterals" },
-                { id: "palatal", name: "Palatals" },
-                { id: "retroflex", name: "Retroflexes" },
-                { id: "dental", name: "Dentals" },
-                { id: "labial", name: "Labials" },
+                { id: "gutteral", name: "gutterals" },
+                { id: "palatal", name: "palatals" },
+                { id: "retroflex", name: "retroflexes" },
+                { id: "dental", name: "dentals" },
+                { id: "labial", name: "labials" },
               ]}
             />
           </p>
           <p>
             <label>
-              <strong>Include by voiced:</strong>
+              <strong>Include by voice:</strong>
             </label>
             <CheckboxList
               classification={"consonantVoiced"}
               list={[
-                { id: "voiced", name: "Voiced" },
-                { id: "unvoiced", name: "Unvoiced" },
+                { id: "voiced", name: "voiced" },
+                { id: "unvoiced", name: "unvoiced" },
               ]}
             />
           </p>
@@ -130,8 +128,8 @@ const SideMenu = ({
             <CheckboxList
               classification={"consonantAspirated"}
               list={[
-                { id: "aspirated", name: "Aspirated" },
-                { id: "unaspirated", name: "Unaspirated" },
+                { id: "aspirated", name: "aspirated" },
+                { id: "unaspirated", name: "unaspirated" },
               ]}
             />
           </p>
@@ -172,19 +170,6 @@ const SideMenu = ({
             }}
           >
             Scores
-          </a>
-        </li>
-        <li>
-          <a
-            href={`/#settings`}
-            className={selected === "settings" ? "on" : ""}
-            onClick={(x) => {
-              x.preventDefault();
-              setSelected("settings");
-              closeMenu();
-            }}
-          >
-            Settings
           </a>
         </li>
       </ul>

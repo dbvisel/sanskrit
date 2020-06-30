@@ -4,7 +4,6 @@ import Consonants from "./components/Consonants";
 import AdditionalCharacters from "./components/AdditionalCharacters";
 import SpecialConjuncts from "./components/SpecialConjuncts";
 import Scores from "./components/Scores";
-import Settings from "./components/Settings";
 import SideMenu from "./components/SideMenu";
 import data from "./assets/data.js";
 import useLocalStorage from "./hooks/useLocalStorage";
@@ -121,13 +120,6 @@ function App() {
             score={score}
             resetScores={() => {
               setScore(makeIds());
-            }}
-          />
-        ) : selected === "settings" ? (
-          <Settings
-            settings={settings}
-            outSettings={(x) => {
-              setSettings(x);
             }}
           />
         ) : null}
