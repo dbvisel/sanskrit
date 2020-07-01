@@ -21,9 +21,11 @@ export const ButtonListUl = styled.ul`
   flex-wrap: wrap;
   justify-content: center;
   & li {
+    ${(props) =>
+      props.category === "sa" ? "font-family: var(--sanskritFont);" : null}
     font-size: 24px;
     border-radius: var(--insidePadding);
-    font-weight: bold;
+    font-weight: ${(props) => (props.category === "sa" ? "normal" : "bold")};
     margin: var(--insidePadding);
     padding: 2px 6px;
     display: inline-flex;

@@ -10,8 +10,9 @@ Font used is Sanskrit 2003, from here: http://salrc.uchicago.edu/resources/fonts
 
 - add in more conjuncts?
 - bigger buttons on mobile?
-- save current page to localstorage
+- add in setting for en-sa/sa-en?
+- settings flash on mobile
 
 ## known issues
 
- - weird tracers around some characters in Mac Chrome
+- weird tracers around some characters in Mac Chrome

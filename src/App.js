@@ -31,6 +31,7 @@ const initialSettings = {
   },
   consonantVoiced: { voiced: true, unvoiced: true },
   consonantAspirated: { aspirated: true, unaspirated: true },
+  enSa: true,
 };
 
 const makeIds = () => {
@@ -49,7 +50,10 @@ const makeIds = () => {
 };
 
 function App() {
-  const [selected, setSelected] = React.useState(dataIds[0]);
+  const [selected, setSelected] = useLocalStorage(
+    "sanskritCurrentPage",
+    dataIds[0]
+  );
   const [modalMenuOpen, setModalMenuOpen] = React.useState(false);
   const [score, setScore] = useLocalStorage("sanskritScores", makeIds());
   const [settings, setSettings] = useLocalStorage(

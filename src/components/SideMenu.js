@@ -1,5 +1,9 @@
 import React from "react";
-import { ModalMenu, SettingDiv } from "./../styledcomponents/MenuStyles.js";
+import {
+  ModalMenu,
+  SettingDiv,
+  DoubleSetting,
+} from "./../styledcomponents/MenuStyles.js";
 import makeChangeSettings from "./../modules/changeSettings";
 
 const SideMenu = ({
@@ -12,10 +16,12 @@ const SideMenu = ({
   outSettings,
 }) => {
   const changeSettings = makeChangeSettings(settings);
-
-  const CheckboxList = ({ classification, list }) => {
+  const CheckboxList = ({ title, classification, list }) => {
     return (
-      <>
+      <p>
+        <label>
+          <strong>{title}</strong>
+        </label>
         {list.map((x, index) => (
           <label key={index}>
             <input
@@ -28,7 +34,7 @@ const SideMenu = ({
             {x.name}
           </label>
         ))}
-      </>
+      </p>
     );
   };
 
@@ -80,59 +86,43 @@ const SideMenu = ({
               Use classifiers
             </label>
           </p>
-          <p>
-            <label>
-              <strong>Include by type:</strong>
-            </label>
-            <CheckboxList
-              classification={"consonantTypes"}
-              list={[
-                { id: "stop", name: "stops" },
-                { id: "nasal", name: "nasals" },
-                { id: "semivowel", name: "semivowels" },
-                { id: "sibilant", name: "sibilants" },
-              ]}
-            />
-          </p>
-          <p>
-            <label>
-              <strong>Include by class:</strong>
-            </label>
-            <CheckboxList
-              classification={"consonantClasses"}
-              list={[
-                { id: "gutteral", name: "gutterals" },
-                { id: "palatal", name: "palatals" },
-                { id: "retroflex", name: "retroflexes" },
-                { id: "dental", name: "dentals" },
-                { id: "labial", name: "labials" },
-              ]}
-            />
-          </p>
-          <p>
-            <label>
-              <strong>Include by voice:</strong>
-            </label>
-            <CheckboxList
-              classification={"consonantVoiced"}
-              list={[
-                { id: "voiced", name: "voiced" },
-                { id: "unvoiced", name: "unvoiced" },
-              ]}
-            />
-          </p>
-          <p>
-            <label>
-              <strong>Include by aspiration:</strong>
-            </label>
-            <CheckboxList
-              classification={"consonantAspirated"}
-              list={[
-                { id: "aspirated", name: "aspirated" },
-                { id: "unaspirated", name: "unaspirated" },
-              ]}
-            />
-          </p>
+          <CheckboxList
+            title={"Include by type:"}
+            classification={"consonantTypes"}
+            list={[
+              { id: "stop", name: "stops" },
+              { id: "nasal", name: "nasals" },
+              { id: "semivowel", name: "semivowels" },
+              { id: "sibilant", name: "sibilants" },
+            ]}
+          />
+          <CheckboxList
+            title={"Include by class:"}
+            classification={"consonantClasses"}
+            list={[
+              { id: "gutteral", name: "gutterals" },
+              { id: "palatal", name: "palatals" },
+              { id: "retroflex", name: "retroflexes" },
+              { id: "dental", name: "dentals" },
+              { id: "labial", name: "labials" },
+            ]}
+          />
+          <CheckboxList
+            title={"Include by voice:"}
+            classification={"consonantVoiced"}
+            list={[
+              { id: "voiced", name: "voiced" },
+              { id: "unvoiced", name: "unvoiced" },
+            ]}
+          />
+          <CheckboxList
+            title={"Include by aspiration:"}
+            classification={"consonantAspirated"}
+            list={[
+              { id: "aspirated", name: "aspirated" },
+              { id: "unaspirated", name: "unaspirated" },
+            ]}
+          />
         </SettingDiv>
       ),
     },
@@ -140,6 +130,32 @@ const SideMenu = ({
   return (
     <ModalMenu>
       <ul>
+        <DoubleSetting>
+          <a
+            href="/#"
+            className={settings.enSa ? "on" : null}
+            onClick={(x) => {
+              x.preventDefault();
+              if (!settings.enSa) {
+                outSettings(changeSettings("enSa"));
+              }
+            }}
+          >
+            Sanskrit —> English
+          </a>
+          <a
+            href="/#"
+            className={settings.enSa ? null : "on"}
+            onClick={(x) => {
+              x.preventDefault();
+              if (settings.enSa) {
+                outSettings(changeSettings("enSa"));
+              }
+            }}
+          >
+            English —> Sanskrit
+          </a>
+        </DoubleSetting>{" "}
         {ids.map((x, index) => (
           <li key={index}>
             <a

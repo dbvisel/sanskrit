@@ -8,12 +8,14 @@ import {
 const SpecialConjuncts = ({ data, score, settings }) => {
   const characters = data.characters;
   const englishLetters = characters.map((x) => x.en);
+  const sanskritLetters = characters.map((x) => x.sa);
   const [clicks, setClicks] = React.useState(0);
   const [currentCharacter, setCurrentCharacter] = React.useState(
     characters[Math.floor(Math.random() * characters.length)]
   );
   const [correctElements, setCorrectElements] = React.useState({
     en: false,
+    sa: false,
   });
 
   const check = (x, key) => {
@@ -24,7 +26,7 @@ const SpecialConjuncts = ({ data, score, settings }) => {
   };
 
   const ButtonList = ({ categoryData, categoryId }) => (
-    <ButtonListUl>
+    <ButtonListUl category={categoryId}>
       {categoryData.map((x, index) => (
         <li
           className={
@@ -47,8 +49,8 @@ const SpecialConjuncts = ({ data, score, settings }) => {
   React.useEffect(() => {
     // console.log(correctElements);
     // console.log(currentCharacter);
-    if (correctElements.en) {
-      setCorrectElements({ en: false });
+    if (correctElements.en || correctElements.sa) {
+      setCorrectElements({ en: false, sa: false });
       score(
         `specialConjuncts_${characters.indexOf(currentCharacter)}`,
         clicks,
@@ -67,9 +69,15 @@ const SpecialConjuncts = ({ data, score, settings }) => {
 
   return (
     <>
-      <BigCharacter>{currentCharacter.sa}</BigCharacter>
+      <BigCharacter>
+        {currentCharacter[settings.enSa ? "sa" : "en"]}
+      </BigCharacter>
       <ChoicesButtons>
-        <ButtonList categoryData={englishLetters} categoryId={"en"} />
+        {settings.enSa ? (
+          <ButtonList categoryData={englishLetters} categoryId={"en"} />
+        ) : (
+          <ButtonList categoryData={sanskritLetters} categoryId={"sa"} />
+        )}
       </ChoicesButtons>
     </>
   );

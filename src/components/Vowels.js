@@ -12,6 +12,7 @@ const Vowels = ({ data, score, settings }) => {
   const lengths = Array.from(new Set(characters.map((x) => x.length)));
   const complexities = Array.from(new Set(characters.map((x) => x.complexity)));
   const englishLetters = characters.map((x) => x.en);
+  const sanskritLetters = characters.map((x) => x.sa);
   const [clicks, setClicks] = React.useState(0);
   const [currentCharacter, setCurrentCharacter] = React.useState(
     characters[Math.floor(Math.random() * characters.length)]
@@ -19,6 +20,7 @@ const Vowels = ({ data, score, settings }) => {
   const [correctElements, setCorrectElements] = React.useState({
     length: false,
     complexity: false,
+    sa: false,
     en: false,
   });
 
@@ -30,7 +32,7 @@ const Vowels = ({ data, score, settings }) => {
   };
 
   const ButtonList = ({ categoryData, categoryId }) => (
-    <ButtonListUl>
+    <ButtonListUl category={categoryId}>
       {categoryData.map((x, index) => (
         <li
           className={
@@ -54,11 +56,17 @@ const Vowels = ({ data, score, settings }) => {
     // console.log(correctElements);
     // console.log(currentCharacter);
     if (
-      correctElements.en &&
-      (!settings.useClassifiers ||
-        (correctElements.length && correctElements.complexity))
+      correctElements.en ||
+      (correctElements.sa &&
+        (!settings.useClassifiers ||
+          (correctElements.length && correctElements.complexity)))
     ) {
-      setCorrectElements({ length: false, complexity: false, en: false });
+      setCorrectElements({
+        length: false,
+        complexity: false,
+        en: false,
+        sa: false,
+      });
       score(
         `vowels_${data.characters.indexOf(currentCharacter)}`,
         clicks,
@@ -85,9 +93,15 @@ const Vowels = ({ data, score, settings }) => {
 
   return (
     <>
-      <BigCharacter>{currentCharacter.sa}</BigCharacter>
+      <BigCharacter>
+        {currentCharacter[settings.enSa ? "sa" : "en"]}
+      </BigCharacter>
       <ChoicesButtons>
-        <ButtonList categoryData={englishLetters} categoryId={"en"} />
+        {settings.enSa ? (
+          <ButtonList categoryData={englishLetters} categoryId={"en"} />
+        ) : (
+          <ButtonList categoryData={sanskritLetters} categoryId={"sa"} />
+        )}
         {settings.useClassifiers ? (
           <>
             <ButtonList categoryData={lengths} categoryId={"length"} />

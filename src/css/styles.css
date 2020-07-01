@@ -33,6 +33,7 @@
   src: url("./../fonts/Sanskrit2003.ttf");
   font-weight: normal;
   font-style: normal;
+  unicode-range: U+0900-FFFF;
 }
 
 :root {
@@ -45,7 +46,7 @@
   --headerHeight: 100px;
   --footerHeight: 101px;
   --uiFont: "Inter", sans-serif;
-  --sanskritFont: "Sanskrit 2003";
+  --sanskritFont: "Sanskrit 2003", "Inter";
   font-family: var(--uiFont);
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;

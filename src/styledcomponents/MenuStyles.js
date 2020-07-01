@@ -77,4 +77,27 @@ export const SettingDiv = styled.div`
   }
 `;
 
-export const MultipleLabel = styled.label``;
+export const DoubleSetting = styled.li`
+  display: flex;
+  transition: 0.5s;
+  &:hover {
+    color: initial !important;
+    background-color: initial !important;
+  }
+  & a {
+    background-color: var(--backdrop);
+    color: var(--text) !important;
+    &:hover {
+      background-color: var(--backdrop);
+      color: var(--text) !important;
+    }
+    &.on {
+      background-color: var(--text);
+      color: var(--backdrop) !important;
+      &:hover {
+        background-color: var(--text);
+        color: var(--backdrop) !important;
+      }
+    }
+  }
+`;
