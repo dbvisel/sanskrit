@@ -16,6 +16,7 @@ export const ModalMenu = styled.div`
     & li {
       transition: 0.5s;
       & a {
+        white-space: nowrap;
         padding: var(--outsidePadding);
         height: 40px;
         width: 100%;
@@ -87,6 +88,7 @@ export const DoubleSetting = styled.li`
   & a {
     background-color: var(--backdrop);
     color: var(--text) !important;
+    white-space: nowrap;
     &:hover {
       background-color: var(--backdrop);
       color: var(--text) !important;

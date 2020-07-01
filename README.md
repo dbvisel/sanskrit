@@ -1,6 +1,6 @@
 # sanskrit practice app
 
-Working version is up at https://sanskrit.netlify.app
+A simple app for learning devanāgarī as used in Sanskrit. Working version is up at https://sanskrit.netlify.app
 
 ## REMEMBER:
 
@@ -10,9 +10,10 @@ Font used is Sanskrit 2003, from here: http://salrc.uchicago.edu/resources/fonts
 
 - add in more conjuncts?
 - bigger buttons on mobile?
-- add in setting for en-sa/sa-en?
+- character sizing for English names on mobile
 - settings flash on mobile
+- mobile sizing for sa —> en
 
 ## known issues
 
-- weird tracers around some characters in Mac Chrome
+- weird tracers around some characters in Mac Chrome?
